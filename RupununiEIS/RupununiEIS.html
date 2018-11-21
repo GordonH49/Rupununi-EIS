@@ -1,0 +1,73 @@
+<head>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+
+</head>
+<body>
+
+  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+  integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+  crossorigin=""></script>
+
+  <! Combining multiple geojson features into single file to be imported here
+  seems to be problematic. Most elegant way to do so?!>
+
+  <script src="Rupununi_Settlements.geojson"></script>
+  <script src="Rupununi_MinorRupununiRoads.geojson"></script>
+  <script src="Rupununi_LethemToGeorgetownRoad.geojson"></script>
+  <script src="Rupununi_RupununiRiver.geojson"></script>
+  <script src="Rupununi_IrengRiver.geojson"></script>
+
+  <div id="myMap" style="width: 600px; height: 400px;"></div>
+
+  <script>
+
+    var myMap = L.map('myMap').setView([3.60, -59.50], 10);
+
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox.streets',
+      accessToken: 'pk.eyJ1IjoiZ29yZG9uaDQ5IiwiYSI6ImNqb2VyaTBhNDAzbjAzdnBjZDdqeTNqc2QifQ.4igWF2cpurehBD9lnfNrLQ'
+    }).addTo(myMap);
+
+    function onEachFeature(feature, layer){
+      if (feature.properties && feature.properties.popupContent) {
+        layer.bindPopup(feature.properties.popupContent);
+      }
+    }
+
+    var majorRoadStyle = {
+      "color": "#840d0d",
+      "weight": 5,
+      "opacity": 1
+    };
+
+    var minorRoadStyle = {
+      "color": "#0d3784",
+      "weight": 5,
+      "opacity": 0.65
+    };
+
+    var settlements = L.geoJSON(settlements, {onEachFeature: onEachFeature})
+    var minorRoads = L.geoJSON(minorRupununiRoads, {style: minorRoadStyle})
+    var lethemGeorgetownRoad = L.geoJSON(lethemToGeorgetownRoad, {style: majorRoadStyle})
+    // Both "River" layers appear to be faulty?
+    var rupununiRiver = L.geoJSON(rupununiRiver)
+    var irengRiver = L.geoJSON(irengRiver)
+
+    var features = {
+      "Settlements": settlements,
+      "Minor Roads": minorRoads,
+      "The lethem to Georgetown Road": lethemGeorgetownRoad,
+      "The Rupununi River": rupununiRiver,
+      "The Ireng River": irengRiver
+    };
+
+    L.control.layers(null, features).addTo(myMap);
+
+  </script>
+
+</body>

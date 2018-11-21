@@ -1,0 +1,17 @@
+var settlements = {
+"type": "FeatureCollection",
+"name": "Rupununi settlements",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 8, "Name": "Katoka", "popupContent": "Katoka" }, "geometry": { "type": "Point", "coordinates": [ -59.296716469960167, 3.555059603737106 ] } },
+{ "type": "Feature", "properties": { "id": 1, "Name": "Karanambu", "popupContent": "Karanambu" }, "geometry": { "type": "Point", "coordinates": [ -59.31000242717289, 3.75288345263958 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Name": "Yupukari", "popupContent": "Yupukari" }, "geometry": { "type": "Point", "coordinates": [ -59.353987142242175, 3.662234260963873 ] } },
+{ "type": "Feature", "properties": { "id": 3, "Name": "Kwaimatta", "popupContent": "Kwaimatta" }, "geometry": { "type": "Point", "coordinates": [ -59.328854011196185, 3.819599525677011 ] } },
+{ "type": "Feature", "properties": { "id": 4, "Name": "Massara", "popupContent": "Massara" }, "geometry": { "type": "Point", "coordinates": [ -59.302018512092701, 3.889097125618187 ] } },
+{ "type": "Feature", "properties": { "id": 7, "Name": "Lethem", "popupContent": "Lethem" }, "geometry": { "type": "Point", "coordinates": [ -59.798250328638581, 3.376258439965563 ] } },
+{ "type": "Feature", "properties": { "id": 8, "Name": "Napi", "popupContent": "Napi" }, "geometry": { "type": "Point", "coordinates": [ -59.556401116870326, 3.461092518524589 ] } },
+{ "type": "Feature", "properties": { "id": 9, "Name": "Moco Moco", "popupContent": "Moco Moco" }, "geometry": { "type": "Point", "coordinates": [ -59.675648729142118, 3.327896049919795 ] } },
+{ "type": "Feature", "properties": { "id": 8, "Name": "Marakanata", "popupContent": "Marakanata" }, "geometry": { "type": "Point", "coordinates": [ -59.499937687575546, 3.623985690003054 ] } },
+{ "type": "Feature", "properties": { "id": 12, "Name": "Toka", "popupContent": "Toka" }, "geometry": { "type": "Point", "coordinates": [ -59.385802875218928, 3.907297515076223 ] } }
+]
+};
