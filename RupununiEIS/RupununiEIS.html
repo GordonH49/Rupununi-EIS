@@ -1,24 +1,30 @@
 <head>
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
-   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-   crossorigin=""/>
+<title>The North Rupununi Environmental Information System</title>
 
 </head>
+
 <body>
+
+  <h1>The North Rupununi Environmental Information System</h1>
+
+  <p>An implementation of geojson layers of infromation on the North Rupununi region</p>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""/>
 
   <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
   integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
   crossorigin=""></script>
-
-  <! Combining multiple geojson features into single file to be imported here
-  seems to be problematic. Most elegant way to do so?!>
 
   <script src="Rupununi_Settlements.geojson"></script>
   <script src="Rupununi_MinorRupununiRoads.geojson"></script>
   <script src="Rupununi_LethemToGeorgetownRoad.geojson"></script>
   <script src="Rupununi_RupununiRiver.geojson"></script>
   <script src="Rupununi_IrengRiver.geojson"></script>
+  <script src="Rupununi_ProposedAgriculturalProject.geojson"></script>
+
 
   <div id="myMap" style="width: 600px; height: 400px;"></div>
 
@@ -41,29 +47,43 @@
 
     var majorRoadStyle = {
       "color": "#840d0d",
-      "weight": 5,
+      "weight": 7,
       "opacity": 1
     };
 
     var minorRoadStyle = {
-      "color": "#0d3784",
-      "weight": 5,
+      "color": "#840d0d",
+      "weight": 3,
       "opacity": 0.65
     };
 
+    var majorRiverStyle = {
+      "color": "#012b70",
+      "weight": 3,
+      "opacity": 1
+    };
+
+    var minorRiverStyle = {
+      "color": "#012b70",
+      "weight": 1.5,
+      "opacity": 0.65
+
+    };
+
     var settlements = L.geoJSON(settlements, {onEachFeature: onEachFeature})
-    var minorRoads = L.geoJSON(minorRupununiRoads, {style: minorRoadStyle})
     var lethemGeorgetownRoad = L.geoJSON(lethemToGeorgetownRoad, {style: majorRoadStyle})
-    // Both "River" layers appear to be faulty?
-    var rupununiRiver = L.geoJSON(rupununiRiver)
-    var irengRiver = L.geoJSON(irengRiver)
+    var minorRoads = L.geoJSON(minorRupununiRoads, {style: minorRoadStyle})
+    var rupununiRiver = L.geoJSON(rupununiRiver, {style: majorRiverStyle})
+    var irengRiver = L.geoJSON(irengRiver, {style: minorRiverStyle})
+    var proposedProject = L.geoJSON(proposedAgriculturalProject)
 
     var features = {
       "Settlements": settlements,
-      "Minor Roads": minorRoads,
       "The lethem to Georgetown Road": lethemGeorgetownRoad,
+      "Minor Roads": minorRoads,
       "The Rupununi River": rupununiRiver,
-      "The Ireng River": irengRiver
+      "The Ireng River": irengRiver,
+      "A Proposed Agricultural Project": proposedProject
     };
 
     L.control.layers(null, features).addTo(myMap);
