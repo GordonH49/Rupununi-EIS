@@ -9,16 +9,16 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-  <link rel="stylesheet" type="text/css" href="Style.css">
+  <link rel="stylesheet" type="text/css" href="Style/Leaflet.css">
 
-  <script src="Leaflet.js"></script>
+  <script src="Libraries/Leaflet.js"></script>
 
-  <script src="Rupununi_Settlements.geojson"></script>
-  <script src="Rupununi_MinorRupununiRoads.geojson"></script>
-  <script src="Rupununi_LethemToGeorgetownRoad.geojson"></script>
-  <script src="Rupununi_RupununiRiver.geojson"></script>
-  <script src="Rupununi_IrengRiver.geojson"></script>
-  <script src="Rupununi_ProposedAgriculturalProject.geojson"></script>
+  <script src="Layers/Rupununi_Settlements.geojson"></script>
+  <script src="Layers/Rupununi_MinorRupununiRoads.geojson"></script>
+  <script src="Layers/Rupununi_LethemToGeorgetownRoad.geojson"></script>
+  <script src="Layers/Rupununi_RupununiRiver.geojson"></script>
+  <script src="Layers/Rupununi_IrengRiver.geojson"></script>
+  <script src="Layers/Rupununi_ProposedAgriculturalProject.geojson"></script>
 
 </head>
 
@@ -32,7 +32,7 @@
 
   <script>
 
-    var myMap = L.map('myMap').fitWorld(); //rupununi location to be used with setView() -- [3.60, -59.50], 10
+    var myMap = L.map('myMap').setView([3.60, -59.50], 10); //rupununi location to be used with setView() -- [3.60, -59.50], 10
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
